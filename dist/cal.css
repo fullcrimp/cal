@@ -1,0 +1,72 @@
+/*general styles*/
+.cont-cal, .cont-cal-control {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cont-cal .day,
+.cont-cal-control .btn,
+.cont-cal-control .cont-cal-title {
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.cont-cal .day,
+.cont-cal-control .btn {
+    width: 14.286%;
+}
+
+/*hovers for buttons and days*/
+.cont-cal .current-month:hover,
+.cont-cal-control .btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+
+/*calenday days*/
+.cont-cal .day {
+    display: inline-block;
+    color: transparent;
+}
+
+.cont-cal .day.current-month {
+    color: inherit;
+}
+
+.cont-cal .day.selected {
+    background-color: rgba(170, 0, 0, 1);
+    color: rgba(255, 255, 204, 1);
+}
+
+
+
+
+/*controls styles*/
+.cont-cal-control {
+    overflow: auto;
+}
+
+/*buttons*/
+.cont-cal-control .btn {
+    font-weight: bold;
+    width: 14.286%;
+}
+
+.cont-cal-control .btn-previous-month {
+    float: left;
+}
+
+.cont-cal-control .btn-next-month {
+    float: right;
+}
+
+.cont-cal-control .cont-cal-title {
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test cal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="cal-jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="cal.css">
+    <style media="screen">
+
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .test1 {
+            width: 400px;
+        }
+        .test2 {
+            font-size: 12px;
+            margin: auto;
+            width: 500px;
+        }
+        .test3 {
+            font-size: 18px;
+            background-color: #333;
+            padding: 200px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="test1"></div>
+    <div class="test2"></div>
+    <div class="test3"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('.test1, .test2, .test3').cal({
+                onDateClick: function(date){
+                    console.log(date);
+                },
+                onMonthChange: function(month, year){
+                    console.log(month, year);
+
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

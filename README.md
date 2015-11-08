@@ -9,7 +9,7 @@ Simplest possible plugin - no restrictions, no popups, minimum scripts. All styl
 Example:
 
 ```javascript
-$('.test1, .test2, .test3').cal({
+$('.elClass').cal({
     onDateClick: function(date){
         console.log(date);
     },

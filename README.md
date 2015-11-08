@@ -2,7 +2,7 @@
 
 Simplest possible plugin - no restrictions, no popups, minimum scripts. All styles in css file.
 
-![example](https://github.com/fullcrimp/cal/blob/master/images/red.png)
+![example](https://github.com/fullcrimp/cal/blob/master/images/blue.png)
 
 ## Jquery plugin
 

@@ -22,8 +22,8 @@ $('.test1, .test2, .test3').cal({
 
 
 
-
-
 ## Angular directive
+@TODO
 
 ## Vanila js module
+@TODO

@@ -2,6 +2,20 @@
 
     $.fn.cal = function(options) {
 
+        var defaults = {
+            mondayFirst: true, // otherwise sunday is first
+
+            onMonthChange: function() {
+                console.log(arguments);
+            },
+
+            onDateClick: function() {
+                console.log(arguments);
+            }
+
+        };
+        var settings = $.extend({}, defaults, options);
+
         return this.each(function() {
 
             // date variables
@@ -13,15 +27,16 @@
 
             // actual content: 4 elements
             // button previous
-            var $btnPrev = $('<div>')
+            var $parent = $(this),
+                $btnPrev = $('<div>')
                 .addClass('btn btn-previous-month')
                 .html('&larr;')
                 .on('click', function() {
                     curMonth = curMonth - 1;
                     updateDate();
 
-                    if (typeof options.onMonthChange !== 'undefined') {
-                        options.onMonthChange(curYear, curMonth);
+                    if (typeof settings.onMonthChange !== 'undefined') {
+                        settings.onMonthChange(curYear, curMonth);
                     }
 
                     showMonth(curMonth, curYear);
@@ -35,8 +50,8 @@
                         curMonth = curMonth + 1;
                         updateDate();
 
-                        if (typeof options.onMonthChange !== 'undefined') {
-                            options.onMonthChange(curYear, curMonth);
+                        if (typeof settings.onMonthChange !== 'undefined') {
+                            settings.onMonthChange(curYear, curMonth);
                         }
 
                         showMonth(curMonth, curYear);
@@ -51,8 +66,8 @@
 
                         var d = new Date(curYear, curMonth, $(this).text());
 
-                        if (typeof options.onDateClick !== 'undefined') {
-                            options.onDateClick(d);
+                        if (typeof settings.onDateClick !== 'undefined') {
+                            settings.onDateClick(d);
                         }
                     }),
 
@@ -65,11 +80,11 @@
                     .addClass('cont-cal-control').append($btnPrev, $btnNext, $contTitle);
 
             // adding to the parent
-            $(this).html('').append($contControl, $contCal);
+            $parent.html('').append($contControl, $contCal);
 
             /**
             * [updateDate description]
-            * @return {[type]} [description]
+            * @return {none} [description]
             */
             function updateDate() {
                 if (curMonth > 11) {
@@ -84,10 +99,10 @@
             }
 
             /**
-            * [showMonth description]
-            * @param  {[type]} month [description]
-            * @param  {[type]} year  [description]
-            * @return {[type]}       [description]
+            * create DOM elements for the month calendar
+            * @param  {integer} month [description]
+            * @param  {integer} year  [description]
+            * @return {none}       [description]
             */
             function showMonth(month, year) {
 
@@ -121,11 +136,17 @@
                 // previous month days els
                 // +1 = correction to make sunday first
                 // -5 = to make it last
-                var correctionDays = 1;
+                var correctionDays = settings.mondayFirst ? -5 : 1;
 
                 // empty days to make a proper week start
                 createDateElements(daysInPrevMonth - firstWeekDay + correctionDays, daysInPrevMonth);
                 createCurrentMonthDateElements(daysInCurMonth);
+
+                // show today selected
+                if (curMonth === today.getMonth()) {
+                    $parent.find('.day.current-month').eq(today.getDate() - 1).addClass('selected');
+                    console.log($(this));
+                }
 
                 // update title
                 $contTitle.html(monthNames[curMonth] + ', ' + curYear);
@@ -133,10 +154,10 @@
 
             /**
             * adds day elements to calendar container from start date to end date
-            * @param  {[type]} startDate [description]
-            * @param  {[type]} endDate   [description]
-            * @param  {[type]} curMonth  [description]
-            * @return {[type]}           [description]
+            * @param  {integer} startDate [description]
+            * @param  {integer} endDate   [description]
+            * @param  {boolean} curMonth  [description]
+            * @return {none}
             */
             function createDateElements(startDate, endDate, curMonth) {
                 var i = startDate;
@@ -149,8 +170,8 @@
 
             /**
             * adds day elements to calendar container with class 'current-month'
-            * @param  {[type]} daysNum [description]
-            * @return {[type]}         [description]
+            * @param  {integer} daysNum [description]
+            * @return {none}         [description]
             */
             function createCurrentMonthDateElements(daysNum) {
                 createDateElements(1, daysNum, true);
@@ -158,9 +179,9 @@
 
             /**
             * returns a day element
-            * @param  integer date  a days date
-            * @param  boolean isCurrentMonth true in case of current month
-            * @return {[type]}       [description]
+            * @param  {integer} date  a days date
+            * @param  {boolean} isCurrentMonth true in case of current month
+            * @return {$object}       jquery DOM object
             */
             function getDayElement(date, isCurrentMonth) {
 
@@ -170,7 +191,6 @@
 
                 return $('<div>')
                     .addClass('day')
-                    // .data('date', curYear + ', ' + curMonth + ', ' + date)
                     .addClass(isCurrentMonth ? 'current-month' : '')
                     .text(date);
             }

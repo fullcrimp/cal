@@ -42,10 +42,14 @@
 }
 
 .cont-cal .day.selected {
-    background-color: rgba(170, 0, 0, 1);
-    color: rgba(255, 255, 204, 1);
+    background-color: rgba(1, 174, 193, 1);
+    color: #fff
 }
 
+.cont-cal .day.today {
+    background-color: rgba(0, 117, 130, 1);
+    color: #fff;
+}
 
 
 

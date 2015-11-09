@@ -10,6 +10,9 @@ Example:
 
 ```javascript
 $('.elClass').cal({
+    
+    mondayFirst: true, // otherwise sunday is first
+
     onDateClick: function(date){
         console.log(date);
     },

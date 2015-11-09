@@ -60,8 +60,9 @@
                 //actual calendar
                 $contCal = $('<div>')
                     .addClass('cont-cal')
-                    .on('click', '.day', function() {
-                        $(this).siblings('.day.selected').removeClass('selected');
+                    .on('click', '.day.current-month', function() {
+                        $contCal.find('.selected').removeClass('selected');
+                        $contCal.find('.today').removeClass('today');
                         $(this).addClass('selected');
 
                         var d = new Date(curYear, curMonth, $(this).text());
@@ -144,8 +145,7 @@
 
                 // show today selected
                 if (curMonth === today.getMonth()) {
-                    $parent.find('.day.current-month').eq(today.getDate() - 1).addClass('selected');
-                    console.log($(this));
+                    $contCal.find('.day.current-month').eq(today.getDate() - 1).addClass('today');
                 }
 
                 // update title

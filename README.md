@@ -10,7 +10,7 @@ Example:
 
 ```javascript
 $('.elClass').cal({
-    
+
     mondayFirst: true, // otherwise sunday is first
 
     onDateClick: function(date){
@@ -29,4 +29,21 @@ $('.elClass').cal({
 @TODO
 
 ## Vanila js module
-@TODO
+
+Example:
+
+```javascript
+cal.init('.test1, .test2, .test3', {
+
+    onDateClick: function(date) {
+        console.log(date);
+    },
+    onMonthChange: function(month, year) {
+        console.log(month, year);
+    }
+});
+
+...
+
+cal.destroy('.test1');
+```

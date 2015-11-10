@@ -1,7 +1,8 @@
-var cal = (function calModule() {
+var cal = (function calModule(document, window) {
 
     function init(selector, options) {
 
+        // default settings
         var settings = {
             mondayFirst: true, // otherwise sunday is first
 
@@ -14,6 +15,7 @@ var cal = (function calModule() {
             },
         };
 
+        // update settings with users options
         for (prop in options) {
             settings[prop] = options[prop];
         };
@@ -77,7 +79,7 @@ var cal = (function calModule() {
             contCal.classList.add('cont-cal');
             contCal.addEventListener('click', function(e) {
 
-                if(e.target.classList.contains('current-month')) {
+                if (e.target.classList.contains('current-month')) {
                     var selectedEls = contCal.getElementsByClassName('selected');
                     if (selectedEls.length > 0) {
                         selectedEls[0].classList.remove('selected');
@@ -235,6 +237,6 @@ var cal = (function calModule() {
 
     return {
         init: init,
-        destroy: destroy
-    }
-})();
+        destroy: destroy,
+    };
+})(document, window);

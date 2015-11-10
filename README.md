@@ -11,7 +11,7 @@ Example:
 ```javascript
 $('.elClass').cal({
 
-    mondayFirst: true, // otherwise sunday is first
+    mondayFirst: false, // otherwise monday is first
 
     onDateClick: function(date){
         console.log(date);
@@ -29,11 +29,13 @@ $('.elClass').cal({
 @TODO
 
 ## Vanila js module
-
+No dependencies. IE9+.
 Example:
 
 ```javascript
 cal.init('.test1, .test2, .test3', {
+
+    mondayFirst: false,
 
     onDateClick: function(date) {
         console.log(date);

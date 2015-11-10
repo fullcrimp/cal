@@ -137,8 +137,12 @@
                 // previous month days els
                 // +1 = correction to make sunday first
                 // -5 = to make it last
+                // settings.mondayFirst = true;
                 var correctionDays = settings.mondayFirst ? -5 : 1;
 
+                // @workaround
+                // correctionDays = (-firstWeekDay + correctionDays) % 7;
+                // console.log(correctionDays);
                 // empty days to make a proper week start
                 createDateElements(daysInPrevMonth - firstWeekDay + correctionDays, daysInPrevMonth);
                 createCurrentMonthDateElements(daysInCurMonth);

@@ -11,8 +11,8 @@ Example:
 ```javascript
 $('.elClass').cal({
 
-    mondayFirst: false, // otherwise monday is first
-
+    sundayPosition: 0, // 6 is default
+    
     onDateClick: function(date){
         console.log(date);
     },
@@ -35,7 +35,7 @@ Example:
 ```javascript
 cal.init('.test1, .test2, .test3', {
 
-    mondayFirst: false,
+    sundayPosition: 0, // 6 is default
 
     onDateClick: function(date) {
         console.log(date);

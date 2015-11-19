@@ -4,7 +4,7 @@ var cal = (function calModule(document, window) {
 
         // default settings
         var settings = {
-            mondayFirst: true, // otherwise sunday is first
+            sundayPosition: 6, // otherwise sunday is first
 
             onMonthChange: function() {
                 console.log(arguments);
@@ -151,18 +151,13 @@ var cal = (function calModule(document, window) {
                 }
 
                 var curTempDate = new Date(curYear, curMonth, 1), // a first day of the month to get a weekday of it
-                firstWeekDay = curTempDate.getDay(),
-                daysInCurMonth = new Date(curYear, curMonth + 1, 0).getDate(), // number of days in the current month
-                daysInPrevMonth = new Date(curYear, curMonth, 0).getDate();  // number of days in the previous month
+                    curMonthFirstWeekDay = curTempDate.getDay(),
+                    daysInCurMonth = new Date(curYear, curMonth + 1, 0).getDate(), // number of days in the current month
+                    daysInPrevMonth = new Date(curYear, curMonth, 0).getDate();  // number of days in the previous month
 
                 // previous month days els
-                // +1 = correction to make sunday first
-                // -5 = to make it last
-                var correctionDays = settings.mondayFirst ? -5 : 1;
-
-                // empty days to make a proper week start
-                createDateElements(daysInPrevMonth - firstWeekDay + correctionDays, daysInPrevMonth);
-                createCurrentMonthDateElements(daysInCurMonth);
+                createDateElements(0, (curMonthFirstWeekDay + settings.sundayPosition) % 7, false);
+                createDateElements(1, daysInCurMonth, true);
 
                 // show today selected
                 if (curMonth === today.getMonth()) {
@@ -183,19 +178,10 @@ var cal = (function calModule(document, window) {
             function createDateElements(startDate, endDate, curMonth) {
                 var i = startDate;
 
-                while (i <= endDate) {
+                while (i < endDate) {
                     contCal.appendChild(getDayElement(i, curMonth));
                     i++;
                 }
-            }
-
-            /**
-            * adds day elements to calendar container with class 'current-month'
-            * @param  {integer} daysNum [description]
-            * @return {none}         [description]
-            */
-            function createCurrentMonthDateElements(daysNum) {
-                createDateElements(1, daysNum, true);
             }
 
             /**
@@ -210,7 +196,9 @@ var cal = (function calModule(document, window) {
 
                 var result = document.createElement('div');
                 result.classList.add('day');
+
                 if (isCurrentMonth) result.classList.add('current-month');
+
                 result.innerHTML = date;
 
                 return result;

@@ -24,14 +24,38 @@
 }
 
 /*hovers for buttons and days*/
-.cont-cal .current-month:hover,
 .cont-cal-control .btn:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+.cont-cal > .current-month:hover,
+.cont-cal.days-2 > .current-month:hover + .day,
+.cont-cal.days-3 > .current-month:hover + .day,
+.cont-cal.days-4 > .current-month:hover + .day,
+.cont-cal.days-5 > .current-month:hover + .day,
+.cont-cal.days-6 > .current-month:hover + .day,
+.cont-cal.days-7 > .current-month:hover + .day,
+.cont-cal.days-3 > .current-month:hover + .day + .day,
+.cont-cal.days-4 > .current-month:hover + .day + .day,
+.cont-cal.days-5 > .current-month:hover + .day + .day,
+.cont-cal.days-6 > .current-month:hover + .day + .day,
+.cont-cal.days-7 > .current-month:hover + .day + .day,
+.cont-cal.days-4 > .current-month:hover + .day + .day + .day,
+.cont-cal.days-5 > .current-month:hover + .day + .day + .day,
+.cont-cal.days-6 > .current-month:hover + .day + .day + .day,
+.cont-cal.days-7 > .current-month:hover + .day + .day + .day,
+.cont-cal.days-5 > .current-month:hover + .day + .day + .day + .day,
+.cont-cal.days-6 > .current-month:hover + .day + .day + .day + .day,
+.cont-cal.days-7 > .current-month:hover + .day + .day + .day + .day,
+.cont-cal.days-6 > .current-month:hover + .day + .day + .day + .day + .day,
+.cont-cal.days-7 > .current-month:hover + .day + .day + .day + .day + .day,
+.cont-cal.days-7 > .current-month:hover + .day + .day + .day + .day + .day + .day {
+    background-color: rgba(0, 0, 0, 0.15);
+}
 
 
-/*calenday days*/
+
+/*calendar days*/
 .cont-cal .day {
     display: inline-block;
     color: transparent;

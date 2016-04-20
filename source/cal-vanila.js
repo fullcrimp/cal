@@ -13,6 +13,10 @@ var cal = (function calModule(document, window) {
             onDateClick: function() {
                 console.log(arguments);
             },
+
+            minDate: null,
+            maxDate: null,
+            range: 3
         };
 
         // update settings with users options
@@ -80,9 +84,11 @@ var cal = (function calModule(document, window) {
             contCal.addEventListener('click', function(e) {
 
                 if (e.target.classList.contains('current-month')) {
+
                     var selectedEls = contCal.getElementsByClassName('selected');
-                    if (selectedEls.length > 0) {
+                    while (selectedEls.length > 0) {
                         selectedEls[0].classList.remove('selected');
+                        selectedEls = contCal.getElementsByClassName('selected');
                     }
 
                     var todayEls = contCal.getElementsByClassName('today');
@@ -91,7 +97,12 @@ var cal = (function calModule(document, window) {
                     }
 
                     //blabla
-                    e.target.classList.add('selected');
+                    var tempNode = e.target,
+                        tempN = settings.range;
+                        while(tempN--){
+                            tempNode.classList.add('selected');
+                            tempNode = tempNode.nextSibling;
+                        }
 
                     var d = new Date(curYear, curMonth, e.target.innerHTML);
 

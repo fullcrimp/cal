@@ -84,11 +84,9 @@ var cal = (function calModule(document, window) {
             contCal.addEventListener('click', function(e) {
 
                 if (e.target.classList.contains('current-month')) {
-
                     var selectedEls = contCal.getElementsByClassName('selected');
-                    while (selectedEls.length > 0) {
+                    if (selectedEls.length > 0) {
                         selectedEls[0].classList.remove('selected');
-                        selectedEls = contCal.getElementsByClassName('selected');
                     }
 
                     var todayEls = contCal.getElementsByClassName('today');
@@ -97,12 +95,7 @@ var cal = (function calModule(document, window) {
                     }
 
                     //blabla
-                    var tempNode = e.target,
-                        tempN = settings.range;
-                        while(tempN--){
-                            tempNode.classList.add('selected');
-                            tempNode = tempNode.nextSibling;
-                        }
+                    e.target.classList.add('selected');
 
                     var d = new Date(curYear, curMonth, e.target.innerHTML);
 

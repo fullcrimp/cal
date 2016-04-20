@@ -65,10 +65,32 @@
     color: inherit;
 }
 
-.cont-cal .day.selected {
+.cont-cal > .day.selected,
+.cont-cal.days-2 > .day.selected + .day,
+.cont-cal.days-3 > .day.selected + .day,
+.cont-cal.days-4 > .day.selected + .day,
+.cont-cal.days-5 > .day.selected + .day,
+.cont-cal.days-6 > .day.selected + .day,
+.cont-cal.days-7 > .day.selected + .day,
+.cont-cal.days-3 > .day.selected + .day + .day,
+.cont-cal.days-4 > .day.selected + .day + .day,
+.cont-cal.days-5 > .day.selected + .day + .day,
+.cont-cal.days-6 > .day.selected + .day + .day,
+.cont-cal.days-7 > .day.selected + .day + .day,
+.cont-cal.days-4 > .day.selected + .day + .day + .day,
+.cont-cal.days-5 > .day.selected + .day + .day + .day,
+.cont-cal.days-6 > .day.selected + .day + .day + .day,
+.cont-cal.days-7 > .day.selected + .day + .day + .day,
+.cont-cal.days-5 > .day.selected + .day + .day + .day + .day,
+.cont-cal.days-6 > .day.selected + .day + .day + .day + .day,
+.cont-cal.days-7 > .day.selected + .day + .day + .day + .day,
+.cont-cal.days-6 > .day.selected + .day + .day + .day + .day + .day,
+.cont-cal.days-7 > .day.selected + .day + .day + .day + .day + .day,
+.cont-cal.days-7 > .day.selected + .day + .day + .day + .day + .day + .day {
     background-color: rgba(1, 174, 193, 1);
-    color: #fff
+    color: #fff;
 }
+
 
 .cont-cal .day.today {
     background-color: rgba(0, 117, 130, 1);
